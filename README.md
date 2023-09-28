@@ -4,7 +4,7 @@ A collection of [Helm](https://helm.sh/) charts maintained by [Datalounges](http
 
 # License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2023 Datalounges Oy
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
