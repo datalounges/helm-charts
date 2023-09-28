@@ -1,0 +1,28 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "metricbeat.fullname" . }}
+  labels:
+    {{- include "metricbeat.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "metricbeat.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "metricbeat.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "metricbeat.fullname" . }}-kubeadm-config
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "metricbeat.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "metricbeat.fullname" . }}-kubeadm-config
+  apiGroup: rbac.authorization.k8s.io
