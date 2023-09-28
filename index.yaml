@@ -21,6 +21,17 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/filebeat-0.0.1/filebeat-0.0.1.tgz
     version: 0.0.1
+  kube-state-metrics:
+  - apiVersion: v2
+    appVersion: 2.10.0
+    created: "2023-09-28T17:12:10.105646799Z"
+    description: A kube-state-metrics Helm chart for Kubernetes
+    digest: 4bed096ccf345ccccf5a8bdf6a0689b4898469e40df2ecc734b873166cd4d981
+    name: kube-state-metrics
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/kube-state-metrics-0.1.0/kube-state-metrics-0.1.0.tgz
+    version: 0.1.0
   metricbeat:
   - apiVersion: v2
     appVersion: 8.10.2
@@ -32,4 +43,4 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.1.0/metricbeat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-28T16:58:06.349080813Z"
+generated: "2023-09-28T17:12:10.105655699Z"
