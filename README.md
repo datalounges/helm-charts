@@ -2,6 +2,11 @@
 
 A collection of [Helm](https://helm.sh/) charts maintained by [Datalounges](https://datalounges.com/).
 
+# Usage
+
+    helm repo add datalounges https://datalounges.github.io/helm-charts
+    helm repo update datalounges
+
 # License
 
     Copyright 2023 Datalounges Oy
