@@ -1,0 +1,86 @@
+---
+
+replicaCount: 1
+
+image:
+  repository: docker.io/opensearchproject/logstash-oss-with-opensearch-output-plugin
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+# Logstash inputs and outputs configuration
+inputs:
+  heartbeat:
+    create: true
+
+  beats:
+    create: true
+    port: 5044
+    sslEnabled: false
+    # sslCertificateAuthorities:
+    #   - '"/usr/share/certs/ca.pem"'
+    # sslCertificate: /usr/share/certs/cert.pem
+    # sslKey: /usr/share/certs/cert.key
+
+outputs:
+  stdout:
+    create: true
+    codec: rubydebug
+
+  opensearch:
+    create: false
+    # user: logstash
+    # password:
+    # index: "%{[@metadata][beat]-%{+YYYY.MM.dd}}"
+    # hosts:
+    #   - '"http://opensearch:9200"'
+    # ssl: false
+    # cacert: /usr/share/certs/ca.pem
+    # sslCertificateVerification: false
+
+extraVolumes: []
+
+extraVolumeMounts: []
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+  # readOnlyRootFilesystem: true
+
+service:
+  type: ClusterIP
+  ports:
+    beats: 5044
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 2
+    memory: 1024Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
