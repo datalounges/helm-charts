@@ -32,6 +32,17 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/kube-state-metrics-0.1.0/kube-state-metrics-0.1.0.tgz
     version: 0.1.0
+  logstash:
+  - apiVersion: v2
+    appVersion: 8.9.0
+    created: "2023-09-28T17:24:17.469519973Z"
+    description: A Logstash Helm chart for Kubernetes
+    digest: ae07fb6c8ddd406d06cde92ad736dddb8f322bf72106f246770c138024ea0ae8
+    name: logstash
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/logstash-0.1.0/logstash-0.1.0.tgz
+    version: 0.1.0
   metricbeat:
   - apiVersion: v2
     appVersion: 8.10.2
@@ -43,4 +54,4 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.1.0/metricbeat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-28T17:12:10.105655699Z"
+generated: "2023-09-28T17:24:17.469528274Z"
