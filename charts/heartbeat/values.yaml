@@ -12,6 +12,21 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+config:
+  monitors: []
+    # - type: http
+    #   urls:
+    #     - https://my-host.my-domain.my-suffix
+    #   schedule: '@every 10s'
+
+  # autodiscover:
+  #   providers:
+  #     - type: kubernetes
+  #       resource: pod
+  #       scope: cluster
+  #       node: ${NODE_NAME}
+  #       hints.enabled: true
+
 outputs:
   logstash:
     create: true
