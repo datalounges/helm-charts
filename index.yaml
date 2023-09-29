@@ -34,6 +34,16 @@ entries:
   heartbeat:
   - apiVersion: v2
     appVersion: 8.10.2
+    created: "2023-09-29T08:42:28.817957753Z"
+    description: A Heartbeat Helm chart for Kubernetes
+    digest: 793a8cba0eac5ffe985bdb9d22e02c527bfda8e1f9d52ff34d91311587a526f8
+    name: heartbeat
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/heartbeat-0.2.1/heartbeat-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 8.10.2
     created: "2023-09-29T08:14:44.448221479Z"
     description: A Heartbeat Helm chart for Kubernetes
     digest: fb45ffdba4a6a3a4c8145d8f920461d33e9698d0e0c9c87b922bbcda15462340
@@ -105,4 +115,4 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.1.0/metricbeat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-29T08:14:44.44823768Z"
+generated: "2023-09-29T08:42:28.818109553Z"
