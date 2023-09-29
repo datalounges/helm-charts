@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "heartbeat.fullname" . }}-deployment-config
+  labels:
+    {{- include "heartbeat.labels" . | nindent 4 }}
+data:
+  heartbeat.yml: |-
+    # Enable the HTTP metrics endpoint at localhost:5066
+    http.enabled: true
+
+    #heartbeat.autodiscover: # Enable one or more of the providers below
+    #  providers:
+    #    - type: kubernetes
+    #      resource: pod
+    #      scope: cluster
+    #      node: ${NODE_NAME}
+    #      hints.enabled: true
+    #
+    #    - type: kubernetes
+    #      resource: service
+    #      scope: cluster
+    #      node: ${NODE_NAME}
+    #      hints.enabled: true
+    #
+    #    - type: kubernetes
+    #      resource: node
+    #      node: ${NODE_NAME}
+    #      scope: cluster
+    #      templates:
+    #        # Example, check SSH port of all cluster nodes:
+    #        - condition: ~
+    #          config:
+    #            - hosts:
+    #                - ${data.host}:22
+    #              name: ${data.kubernetes.node.name}
+    #              schedule: '@every 10s'
+    #              timeout: 5s
+    #              type: tcp
+
+    processors:
+      - add_cloud_metadata:
+
+    {{- if .Values.outputs.logstash.create }}
+    output.logstash:
+      hosts: [{{ join "," .Values.outputs.logstash.hosts }}]
+      {{- if .Values.outputs.logstash.ssl.enabled }}
+      ssl.enabled: true
+      ssl.verification_mode: "{{ .Values.outputs.logstash.ssl.verificationMode }}"
+      ssl.certificate: "{{ .Values.outputs.logstash.ssl.certificate }}"
+      ssl.key: "{{ .Values.outputs.logstash.ssl.key }}"
+      ssl.certificate_authorities: [{{ join "," .Values.outputs.logstash.ssl.certificateAuthorities }}]
+      {{- else }}
+      ssl.enabled: false
+      {{- end }}
+    {{- end }}
