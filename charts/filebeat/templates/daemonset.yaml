@@ -41,15 +41,19 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          # TODO: configure probes
-          #livenessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
-          #readinessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
+          livenessProbe:
+            httpGet:
+              path: /
+              host: 127.0.0.1
+              port: 5066
+          readinessProbe:
+            exec:
+              command:
+                - /usr/share/filebeat/filebeat
+                - test
+                - output
+            # We don't need to run this that often, as this is just for operator help
+            periodSeconds: 30
           volumeMounts:
             - name: config
               mountPath: /etc/filebeat.yml
@@ -72,7 +76,7 @@ spec:
         - name: config
           configMap:
             defaultMode: 0640
-            name: filebeat-config
+            name: {{ include "filebeat.fullname" . }}-config
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
@@ -83,7 +87,9 @@ spec:
         - name: data
           hostPath:
             # When filebeat runs as non-root user, this directory needs to be writable by group (g+w).
-            path: /var/lib/filebeat-data
+            # Use a similar path that the ECK operator uses:
+            #   https://github.com/elastic/cloud-on-k8s/blob/f130ac0a05c4b398c1591023f1835bb467e1d1dd/pkg/controller/beat/common/pod.go#L35C2-L35C2
+            path: /var/lib/{{ .Release.Namespace }}/{{ include "filebeat.fullname" . }}/filebeat-data
             type: DirectoryOrCreate
         {{- with .Values.extraVolumes }}
           {{- toYaml . | nindent 8 }}

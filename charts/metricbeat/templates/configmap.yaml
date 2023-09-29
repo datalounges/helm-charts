@@ -7,6 +7,9 @@ metadata:
     {{- include "metricbeat.labels" . | nindent 4 }}
 data:
   metricbeat.yml: |-
+    # Enable the HTTP metrics endpoint at localhost:5066
+    http.enabled: true
+
     metricbeat.config.modules:
       # Mounted `metricbeat-daemonset-modules` configmap:
       path: ${path.config}/modules.d/*.yml

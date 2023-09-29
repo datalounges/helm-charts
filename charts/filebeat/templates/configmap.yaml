@@ -7,6 +7,9 @@ metadata:
     {{- include "filebeat.labels" . | nindent 4 }}
 data:
   filebeat.yml: |-
+    # Enable the HTTP metrics endpoint at localhost:5066
+    http.enabled: true
+
     filebeat.inputs:
     - type: container
       paths:
