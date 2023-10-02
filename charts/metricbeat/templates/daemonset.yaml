@@ -41,7 +41,7 @@ spec:
             httpGet:
               path: /
               host: 127.0.0.1
-              port: 5066
+              port: {{ .Values.config.httpPort }}
           readinessProbe:
             exec:
               command:

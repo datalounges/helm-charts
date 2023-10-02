@@ -12,7 +12,11 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+
 config:
+  # Use different http.port setting for each Beat as hostNetwork is set to true
+  httpPort: 15067
+
   monitors: []
     # - type: http
     #   urls:

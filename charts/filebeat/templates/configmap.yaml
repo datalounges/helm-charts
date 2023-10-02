@@ -7,8 +7,9 @@ metadata:
     {{- include "filebeat.labels" . | nindent 4 }}
 data:
   filebeat.yml: |-
-    # Enable the HTTP metrics endpoint at localhost:5066
+    # Enable the HTTP metrics endpoint
     http.enabled: true
+    http.port: {{ .Values.config.httpPort }}
 
     filebeat.inputs:
     - type: container
