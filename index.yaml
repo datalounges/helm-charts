@@ -3,6 +3,16 @@ entries:
   filebeat:
   - apiVersion: v2
     appVersion: 8.10.2
+    created: "2023-10-02T08:18:33.034588123Z"
+    description: A Filebeat Helm chart for Kubernetes
+    digest: 2dca092926a50f5829ff162f85b81a90019fa4705569af29faf67bbdff20a766
+    name: filebeat
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/filebeat-0.2.1/filebeat-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 8.10.2
     created: "2023-09-29T04:43:22.442025373Z"
     description: A Filebeat Helm chart for Kubernetes
     digest: e415103e85ce4638e1a0e71e32861966d2cf6a0d09ac38e09d250a324ef74d1c
@@ -32,6 +42,16 @@ entries:
     - https://github.com/datalounges/helm-charts/releases/download/filebeat-0.0.1/filebeat-0.0.1.tgz
     version: 0.0.1
   heartbeat:
+  - apiVersion: v2
+    appVersion: 8.10.2
+    created: "2023-10-02T08:18:33.27132883Z"
+    description: A Heartbeat Helm chart for Kubernetes
+    digest: 025e20ef50981b8bb159e1ace930c39c0328c7d85fe6f5bc640845883f5f4067
+    name: heartbeat
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/heartbeat-0.2.2/heartbeat-0.2.2.tgz
+    version: 0.2.2
   - apiVersion: v2
     appVersion: 8.10.2
     created: "2023-09-29T08:42:28.817957753Z"
@@ -87,6 +107,16 @@ entries:
   metricbeat:
   - apiVersion: v2
     appVersion: 8.10.2
+    created: "2023-10-02T08:18:33.52598089Z"
+    description: A Metricbeat Helm chart for Kubernetes
+    digest: 167fad8b8d33bbd841083de6257b4bbc95652ce5d64429f8cec5adeaa277f68b
+    name: metricbeat
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.2.2/metricbeat-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 8.10.2
     created: "2023-09-29T08:05:13.001388111Z"
     description: A Metricbeat Helm chart for Kubernetes
     digest: 922273077be4fcb611af561e972fd71f5c228806170838bebd93b020fd4ee84b
@@ -115,4 +145,4 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.1.0/metricbeat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-29T08:42:28.818109553Z"
+generated: "2023-10-02T08:18:33.52603099Z"
