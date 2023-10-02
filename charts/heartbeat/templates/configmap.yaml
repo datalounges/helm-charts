@@ -7,8 +7,9 @@ metadata:
     {{- include "heartbeat.labels" . | nindent 4 }}
 data:
   heartbeat.yml: |-
-    # Enable the HTTP metrics endpoint at localhost:5066
+    # Enable the HTTP metrics endpoint
     http.enabled: true
+    http.port: {{ .Values.config.httpPort }}
 
     {{- with .Values.config.monitors }}
     heartbeat.monitors:
