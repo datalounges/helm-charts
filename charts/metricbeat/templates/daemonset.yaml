@@ -45,9 +45,11 @@ spec:
           readinessProbe:
             exec:
               command:
-                - /usr/share/metricbeat/metricbeat
-                - test
-                - output
+                - "/usr/share/metricbeat/metricbeat"
+                - "test"
+                - "output"
+                - "-c"
+                - "/etc/metricbeat.yml"
             # We don't need to run this that often, as this is just for operator help
             periodSeconds: 30
           env:
