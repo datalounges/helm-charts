@@ -49,9 +49,11 @@ spec:
           readinessProbe:
             exec:
               command:
-                - /usr/share/filebeat/filebeat
-                - test
-                - output
+                - "/usr/share/filebeat/filebeat"
+                - "test"
+                - "output"
+                - "-c"
+                - "/etc/filebeat.yml"
             # We don't need to run this that often, as this is just for operator help
             periodSeconds: 30
           volumeMounts:

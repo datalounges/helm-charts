@@ -51,9 +51,11 @@ spec:
           readinessProbe:
             exec:
               command:
-                - /usr/share/heartbeat/heartbeat
-                - test
-                - output
+                - "/usr/share/heartbeat/heartbeat"
+                - "test"
+                - "output"
+                - "-c"
+                - "/etc/heartbeat.yml"
             # We don't need to run this that often, as this is just for operator help
             periodSeconds: 30
           volumeMounts:
