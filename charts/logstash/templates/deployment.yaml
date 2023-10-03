@@ -32,8 +32,11 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
+            - name: api
+              containerPort: {{ .Values.service.api.port }}
+              protocol: TCP
             - name: beats
-              containerPort: {{ .Values.service.ports.beats }}
+              containerPort: {{ .Values.service.beats.port }}
               protocol: TCP
           volumeMounts:
             - name: config
@@ -47,15 +50,15 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 9600
+              port: api
           readinessProbe:
             httpGet:
               path: /
-              port: 9600
+              port: api
           startupProbe:
             httpGet:
               path: /
-              port: 9600
+              port: api
             periodSeconds: 10
             failureThreshold: 30
           resources:

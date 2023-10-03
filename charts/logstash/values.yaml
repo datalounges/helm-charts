@@ -11,7 +11,7 @@ image:
 # Logstash inputs and outputs configuration
 inputs:
   heartbeat:
-    create: true
+    create: false
 
   beats:
     create: true
@@ -24,11 +24,11 @@ inputs:
 
 outputs:
   stdout:
-    create: true
+    create: false
     codec: rubydebug
 
   opensearch:
-    create: false
+    create: true
     # user: logstash
     # password:
     # index: "%{[@metadata][beat]-%{+YYYY.MM.dd}}"
@@ -67,9 +67,12 @@ securityContext:
   # readOnlyRootFilesystem: true
 
 service:
-  type: ClusterIP
-  ports:
-    beats: 5044
+  api:
+    type: ClusterIP
+    port: 9600
+  beats:
+    type: ClusterIP
+    port: 5044
 
 resources:
   requests:
