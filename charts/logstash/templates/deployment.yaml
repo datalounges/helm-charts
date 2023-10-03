@@ -44,15 +44,20 @@ spec:
             {{- with .Values.extraVolumeMounts }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
-          # TODO: configure probes
-          #livenessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
-          #readinessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9600
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9600
+          startupProbe:
+            httpGet:
+              path: /
+              port: 9600
+            periodSeconds: 10
+            failureThreshold: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
