@@ -8,6 +8,18 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+config:
+  # LS_JAVA_OPTS to pass to the container. 1g is the default amount of heap.
+  javaOpts: "-Xms1g -Xmx1g"
+
+  # Adjust the pipeline batch size and delay as needed. See:
+  #   https://www.elastic.co/guide/en/logstash/current/tuning-logstash.html
+  pipelineBatchSize: 125
+  pipelineBatchDelay: 50
+
+  # Number of pipeline workers, defaults to the CPU cores limit
+  # pipelineWorkers: 16
+
 # Logstash inputs and outputs configuration
 inputs:
   heartbeat:
@@ -67,20 +79,17 @@ securityContext:
   # readOnlyRootFilesystem: true
 
 service:
-  api:
-    type: ClusterIP
-    port: 9600
-  beats:
-    type: ClusterIP
-    port: 5044
+  type: ClusterIP
+  ports:
+    beats: 5044
 
 resources:
   requests:
-    cpu: 100m
-    memory: 512Mi
-  limits:
     cpu: 2
-    memory: 1024Mi
+    memory: 2048Mi
+  limits:
+    cpu: 4
+    memory: 2048Mi
 
 nodeSelector: {}
 

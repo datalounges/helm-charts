@@ -31,15 +31,19 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: LS_JAVA_OPTS
+              value: "{{ .Values.config.javaOpts }}"
           ports:
-            - name: api
-              containerPort: {{ .Values.service.api.port }}
-              protocol: TCP
             - name: beats
-              containerPort: {{ .Values.service.beats.port }}
+              containerPort: {{ .Values.service.ports.beats }}
               protocol: TCP
           volumeMounts:
             - name: config
+              mountPath: /usr/share/logstash/config/logstash.yml
+              readOnly: true
+              subPath: logstash.yml
+            - name: pipeline
               mountPath: /usr/share/logstash/pipeline
               readOnly: true
             - name: data
@@ -50,15 +54,15 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: api
+              port: 9600
           readinessProbe:
             httpGet:
               path: /
-              port: api
+              port: 9600
           startupProbe:
             httpGet:
               path: /
-              port: api
+              port: 9600
             periodSeconds: 10
             failureThreshold: 30
           resources:
@@ -66,7 +70,10 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ include "logstash.fullname" . }}
+            name: {{ include "logstash.fullname" . }}-config
+        - name: pipeline
+          configMap:
+            name: {{ include "logstash.fullname" . }}-pipeline
         - name: data
           emptyDir: {}
         {{- with .Values.extraVolumes }}
