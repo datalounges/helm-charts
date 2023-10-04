@@ -157,6 +157,16 @@ entries:
   metricbeat:
   - apiVersion: v2
     appVersion: 8.10.2
+    created: "2023-10-04T05:15:18.946627326Z"
+    description: A Metricbeat Helm chart for Kubernetes
+    digest: 7bcb8b761aa9c65d37acfd9c6adfe332b69764b47a511dd05b353f5f96aca1ba
+    name: metricbeat
+    type: application
+    urls:
+    - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.2.4/metricbeat-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
+    appVersion: 8.10.2
     created: "2023-10-02T09:15:19.421865306Z"
     description: A Metricbeat Helm chart for Kubernetes
     digest: c4b85e8d512eee6c124dbd27769ab5d158c7f904410f4f8bc3f8cd23f70340d4
@@ -205,4 +215,4 @@ entries:
     urls:
     - https://github.com/datalounges/helm-charts/releases/download/metricbeat-0.1.0/metricbeat-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-03T06:22:45.855340301Z"
+generated: "2023-10-04T05:15:18.946677826Z"
