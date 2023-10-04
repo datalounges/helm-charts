@@ -30,7 +30,7 @@ data:
             - config:
                 - module: kubernetes
                   hosts: [{{ join "," .Values.config.kubeStateMetricsHosts }}]
-                  period: 10s
+                  period: 1m
                   add_metadata: true
                   metricsets:
                     - state_node
@@ -58,7 +58,7 @@ data:
                   bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
                   ssl.certificate_authorities:
                     - /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-                  period: 30s
+                  period: 1m
                 # Uncomment this to get k8s events:
                 #- module: kubernetes
                 #  metricsets:
@@ -94,7 +94,7 @@ metadata:
 data:
   system.yml: |-
     - module: system
-      period: 10s
+      period: 1m
       metricsets:
         - cpu
         - load
@@ -126,7 +126,7 @@ data:
         - pod
         - container
         - volume
-      period: 10s
+      period: 1m
       host: ${NODE_NAME}
       hosts: ["https://${NODE_NAME}:10250"]
       bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -138,7 +138,7 @@ data:
     - module: kubernetes
       metricsets:
         - proxy
-      period: 10s
+      period: 1m
       host: ${NODE_NAME}
       hosts: ["localhost:10249"]
       # If using Red Hat OpenShift should be used this `hosts` setting instead:
