@@ -55,6 +55,12 @@ data:
 
     processors:
       - add_cloud_metadata:
+      - add_host_metadata:
+      {{- with .Values.addFields }}
+      - add_fields:
+          fields:
+            {{- toYaml . | nindent 12 }}
+      {{- end }}
 
     {{- if .Values.outputs.logstash.create }}
     output.logstash:
