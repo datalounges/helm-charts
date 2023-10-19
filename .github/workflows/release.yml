@@ -26,6 +26,11 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
+      - name: Add Datalounges repository
+        run: |
+          helm repo add datalounges https://datalounges.github.io/helm-charts
+          helm repo update datalounges
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         env:
