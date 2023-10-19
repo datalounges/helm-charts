@@ -1,0 +1,13 @@
+---
+
+filebeat:
+  fullnameOverride: filebeat
+
+heartbeat:
+  fullnameOverride: heartbeat
+
+kube-state-metrics:
+  fullnameOverride: kube-state-metrics
+
+metricbeat:
+  fullnameOverride: metricbeat

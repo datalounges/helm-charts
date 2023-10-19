@@ -1,0 +1,15 @@
+dependencies:
+- name: filebeat
+  repository: https://datalounges.github.io/helm-charts
+  version: 0.2.2
+- name: heartbeat
+  repository: https://datalounges.github.io/helm-charts
+  version: 0.2.4
+- name: kube-state-metrics
+  repository: https://datalounges.github.io/helm-charts
+  version: 0.1.0
+- name: metricbeat
+  repository: https://datalounges.github.io/helm-charts
+  version: 0.2.6
+digest: sha256:126425420433d5749f977f29009cff616b6e8ce68d61b479d89e4fd34ab47b4e
+generated: "2023-10-19T14:59:37.669487+03:00"
