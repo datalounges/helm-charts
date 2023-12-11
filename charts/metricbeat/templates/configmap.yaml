@@ -134,7 +134,7 @@ data:
         - volume
       period: 30s
       host: ${NODE_NAME}
-      hosts: ["https://${NODE_NAME}:10250"]
+      hosts: ["https://${HOST_IP}:10250"]
       bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       ssl.verification_mode: "none"
       # If there is a CA bundle that contains the issuer of the certificate used in the Kubelet API,
